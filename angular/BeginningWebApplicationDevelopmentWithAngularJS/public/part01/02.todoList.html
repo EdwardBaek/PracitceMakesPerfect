@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+	<meta charset="UTF-8">
+	<title>TODO App Demo</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="./02.todoListController.js"></script>
+</head>
+<body class="well" ng-controller="todoCtrl">
+	<h1>{{ appName }}</h1>
+	<h1>AngularJs TODO App</h1>
+	<p>전체 할 일 <strong>{{ todoList.length }}</strong>개 / 남은 할 일  <strong>{{ remain() }}</strong>개 [ <a href="" ng-click="archive()">보관하기</a> ]</p>
+	<ul class="list-unstyled" >
+		<!-- <li class="checkbox"><input type="checkbox">AngularJs Coding</li>
+		<li class="checkbox"><input type="checkbox">부족한 코딩</li> -->
+
+		<li class="checkbox" ng-repeat="todo in todoList">
+			<input type="checkbox" ng-model="todo.done">{{ todo.title }}
+		</li>
+
+	</ul>
+
+	<form name="newItemForm" class="form-inline" action="">
+		<div class="form-group">
+			<label class="sr-only" for="newItemText">새로운 할 일</label>
+			<input type="text" class="form-control" name"newItemText" placeholder=
+			"새로운 할 일" ng-model="newTitle">
+		</div>
+		<button type="submit" class="btn btn-default" ng-click="addNewTodo(newTitle)">추가</button>		
+	</form>
+</body>
+</html>

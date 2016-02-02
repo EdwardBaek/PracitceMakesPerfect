@@ -1,0 +1,10 @@
+@charset "utf-8";
+*{
+	border : 2px solid black;
+}
+h1:hover{
+	background-color: gray;
+}
+h1{
+	color: blue;				
+}

@@ -1,0 +1,35 @@
+복습
+	1.HTML - Hyper Text Markup Language
+	2.HTML 구조 - head body
+	3.HTML head 내용
+		-
+	4.태그 인라인/블락 - h, span
+
+진행
+	1.언어-인코딩
+		<html lnag="">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="utf-8">
+	2.주석
+		- <!-- -->
+	3.DOM Document Object Model 
+		-element / attribute
+	4.style 적용
+		1.각 엘리먼트단위
+		2.head style tag
+		3.외부 css
+	4.태그의 의미론적 구분
+	   div
+	   header	-페이지나 절의 헤더 영역
+	   footer	-페이지나 절의 푸터 영역
+	   nav		-페이지나 절의 내비게이션 영역
+	   section	-페이지의 논리적 영역 또는 내용의 그룹
+	   article	-하나의 글 또는 완결된 내용
+	   aside	-부차적인 또는 관련 있는 내용
+	5.class / id
+	6.CSS3 간략
+		대상 { 속성: 값; }
+	7.선택자
+	6.선택자 상속
+
+	<link rel="stylesheet" type="text/css" href="">
