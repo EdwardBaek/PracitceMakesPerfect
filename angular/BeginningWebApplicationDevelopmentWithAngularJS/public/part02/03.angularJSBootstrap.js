@@ -22,6 +22,7 @@ https://docs.angularjs.org/guide/bootstrap
 
 
 /*
+//cotroller way 1
 angular.module( 'myApp', [])
 .controller( 'MyController', 
 	['$scope', 
@@ -32,16 +33,16 @@ angular.module( 'myApp', [])
 );
 */
 
+//cotroller way 2
 angular.module( 'myApp', [])
 .controller( 'MyController', 
 	function( $scope ){
-			$scope.greetMe = 'World';
+		$scope.greetMe = 'World with MyController in myApp';
 	}	
 );
 
 angular.element(document).ready( function(){
 	angular.bootstrap( document.getElementById('app1') );
 	angular.bootstrap( document.getElementById('app2') );
-
-	angular.bootstrap( document, ['myApp']);
+	angular.bootstrap( document.getElementById('myApp'), ['myApp']);
 });

@@ -7,26 +7,26 @@
 	<script type="text/javascript" src="./03.angularJSBootstrap.js"></script>
 </head>
 <body>
-	<div ng-app ng-init="name='AngualrJS'">
-		<h1>ng-app 지시자 사용 첫번째: Hello {{ name }} {{  1 + 3 }}</h1>
+	<div ng-app ng-init="greetMe='AngualrJS with ng-init in ng-app'">
+		<h2>ng-app 지시자 사용 첫번째 : 1 + 3 = {{  1 + 3 }} / Hello {{ greetMe }}!1</h2>
 	</div>
 	<div ng-app>
-		<h1>ng-app 지시자 사용 두번째 :  {{  1 + 3 }}</h1>
+		<h2>ng-app 지시자 사용 두번째 : 1 + 3 = {{  1 + 3 }} / hello {{ greetMe }}!</h2>
 	</div>
 	<div>
-		<h1>ng-app 지시자의 영역 구분 : {{  1 + 3 }}</h1>
+		<h2>ng-app 지시자의 영역 구분 : 1 + 3 = {{  1 + 3 }} / hello {{ greetMe }}!</h2>
 	</div>
 	<div id="app1">
-		<h1>angular.bootstrap 메서드 사용 : {{  1 + 3 }}</h1>
+		<h2>angular.bootstrap 메서드 사용 : 1 + 3 = {{  1 + 3 }} / hello {{ greetMe }}!</h2>
 	</div>
-	<div  id="app2">
-		<h1>angular.bootstrap 메서드 사용 : {{  1 + 3 }}</h1>
+	<div id="app2">
+		<h2>angular.bootstrap 메서드 사용 : 1 + 3 = {{  1 + 3 }} / hello {{ greetMe }}!</h2>
 	</div>
-	<div  ng-controller="MyController">
-		<h1>angular.bootstrap 메서드 사용 : hello {{ greetMe }}!</h1>
+	<div id="myApp" ng-controller="MyController">
+		<h2>angular.bootstrap 메서드 사용/콘트롤러 적용 : 1 + 3 = {{  1 + 3 }} / hello {{ greetMe }}! </h2>
 	</div>
 	</br>
-	<h1>Automatic Initialization</h1>
+	<h2>Automatic Initialization</h2>
 	<img src="https://docs.angularjs.org/img/guide/concepts-startup.png">
 </body>
 </html>

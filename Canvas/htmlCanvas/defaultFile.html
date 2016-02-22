@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Ch2BaseFile - Template For Chapter 2 Examples</title>
+	<script type="text/javascript">
+	window.addEventListener('load', eventWindowLoaded, false);
+
+	function eventWindowLoaded(){
+		canvasApp();
+	}
+	function canvasSupport(){
+		return Modernizr.canvas;
+	}
+	function canvasApp(){
+		// if(!canvasSupport){
+		// 	return;
+		// }else{
+			var theCanvas = document.getElementById("canvas");
+			var context = theCanvas.getContext("2d");
+		// }		
+		drawScreen();
+
+		function drawScreen(){
+			//변경 사항을 넣는 위치			
+			// drawTest();
+			// drawRect();
+			// drawPath();
+			drawPathAdvance();
+		}
+
+		function drawTest(){
+			//box
+			context.fillStyle = '#aaaa00';
+			context.fillRect(0,0,200,200);
+			//text test
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("Canvas!",70,90);
+			//text test
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("Hello!",140,180);
+			// 0,0
+			context.fillStyle = '#000000';
+			context.fillRect(0,0,10,10);
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("0,0",10,10);
+			// 200,200
+			context.fillStyle = '#000000';
+			context.fillRect(200,200,10,10);
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("200,200",210,210);
+			// 200,0
+			context.fillStyle = '#000000';
+			context.fillRect(200,0,10,10);
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("200,0",210,10);
+			// 0, 200
+			context.fillStyle = '#000000';
+			context.fillRect(0,200,10,10);
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("0,200",10,210);
+		}
+		function drawRect(){
+			/*
+			//내부가 채워진 사각형
+			fillRect(x, y, width, height)
+			//사각형의 테두리 - strokeStyle, linewidth, lineJoin, miterLimit 설정을 이용
+			strokeRect(x, y, width, height)
+			//(투명한 검은색을 이용한) 투명한 사각형을 만든다.
+			clearRect(x, y, width, height)
+			*/
+			context.fillStyle = '#000000';
+			context.strokeStyle = '#ff00ff';
+			context.lineWidth = 2;
+			context.fillRect(10, 10, 40, 40);
+			context.strokeRect(0, 0, 60, 60);
+			context.clearRect(20, 20, 20, 20);
+
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("fillRect",0,150);
+
+			context.fillStyle = '#000000';
+			context.lineWidth = 2;
+			context.fillRect(0, 170, 40, 40);
+
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText("fillRect",100,150);
+
+			context.strokeStyle = '#ff00ff';
+			context.lineWidth = 2;
+			context.strokeRect(100, 170, 60, 60);
+
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText('clearRect', 200, 150);
+
+			context.clearRect(200, 170, 20, 20);
+
+			context.fillStyle = '#000000';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText('clearRect in fillRect',300, 150);
+
+			context.fillStyle = '#000000';
+			context.fillRect(300, 170, 40, 40);
+			context.clearRect(300, 170, 20, 20);
+		}
+		function drawPath(){
+			// 20,0 위치에서 100,0 위치까지 10픽셀 두께의 가로선(또는 테두리)
+			context.strokeStyle = 'black'; // 표준 색상 이름 이용
+			context.lineWidth = 10;
+			context.lineCap = 'square';
+			context.beginPath();
+			context.moveTo(20, 0);
+			context.lineTo(100, 0);
+			context.stroke();
+			context.closePath();
+
+			/*
+			lineCap 특성
+			context.lineCap 
+			-butt : 기본값. 수직으로 꺾인 납작한 끝모양
+			-round : 바원 모양, 선의 두께가 지름
+			-square : 길이는 선 두께와 같고 폭은 선 두께의 반인 직사각형을 수징으로 꺽인 납작한 선 끝에 놓은 모양
+			*/
+			context.fillStyle = 'black';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText('butt', 20, 100);
+			context.strokStyle = 'black';
+			context.lineWidth = 10;
+			context.lineCap = 'butt'
+			context.beginPath();
+			context.moveTo(20, 140);
+			context.lineTo(100, 140);
+			context.stroke();
+			context.closePath();
+
+			context.fillStyle = 'black';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText('round', 120, 100);
+			context.strokStyle = 'black';
+			context.lineWidth = 10;
+			context.lineCap = 'round'
+			context.beginPath();
+			context.moveTo(120, 140);
+			context.lineTo(200, 140);
+			context.stroke();
+			context.closePath();
+
+			context.fillStyle = 'black';
+			context.font = '20px _sans';
+			context.textBaseline = 'top';
+			context.fillText('square', 220, 100);
+			context.strokStyle = 'black';
+			context.lineWidth = 10;
+			context.lineCap = 'square'
+			context.beginPath();
+			context.moveTo(220, 140);
+			context.lineTo(300, 140);
+			context.stroke();
+			context.closePath();
+		}
+
+		function drawPathMore(){
+			context.lineWidth = 10;
+
+
+			// context.lineJoin = 'bevel';
+			context.lineCap = 'round';
+			context.beginPath();
+			context.moveTo(100, 5);
+			context.lineTo(125, 5);
+			context.lineTo(125, 25);
+			context.stroke();
+			context.closePath();
+
+			// 예 1: round 끝, bevel 조인
+			context.lineJoin = 'bevel';
+			context.lineCap = 'round';
+			context.beginPath();
+			context.moveTo(0, 0);
+			context.lineTo(25, 0);
+			context.lineTo(25, 25);
+			context.stroke();
+			context.closePath();
+
+			// 예 2: round 끝, bevel 조인, 캔버스의 왼쪽이나 위에 위치하지 않음
+			context.beginPath();
+			context.moveTo(10, 50);
+			context.lineTo(35, 50);
+			context.lineTo(35, 75);
+			context.stroke();
+			context.closePath();
+
+			// 예 3: butt 끝, bevel 조인, 캔버스의 왼쪽이나 위에 위치하지 않음
+			context.lineJoin = 'round';
+			context.lineCap = 'butt';
+			context.beginPath();
+			context.moveTo(10, 100);
+			context.lineTo(35, 100);
+			context.lineTo(35, 125);
+			context.stroke();
+			context.closePath();
+		}
+		function drawPathAdvance(){
+			// context.arc(x, y, radius, startAngle, endAngle, anticlockwise)
+			// context.arc(100, 100, 20, (Math.PI/180)*0, (Math.PI/180)*360, anticlockwise)
+
+			context.beginPath();
+			context.strokeStyle = 'black';
+			context.lineWidth = 5;
+			context.arc(100, 100, 20, (Math.PI/180)*0, (Math.PI/180)*360, false);
+			context.stroke();
+			context.closePath();
+
+			context.beginPath();
+			context.strokeStyle = 'blue';
+			context.lineWidth = 1;
+			context.moveTo(100, 100);
+			context.lineTo(100, 50);
+			context.stroke();
+			context.closePath();
+
+			context.beginPath();
+			context.strokeStyle = 'black';
+			context.lineWidth = 5;
+			context.arc(200, 200, 20, (Math.PI/180)*0, (Math.PI/180)*90, false);
+			context.stroke();
+			context.closePath();
+
+			context.beginPath();
+			context.strokeStyle = 'black';
+			context.lineWidth = 5;
+			context.arc(300, 200, 20, (Math.PI/180)*0, (Math.PI/180)*90, true);
+			context.stroke();
+			context.closePath();
+
+			context.beginPath();
+			context.strokeStyle = 'black';
+			context.lineWidth = 5;
+			context.arc(400, 200, 20, (Math.PI/180)*90, (Math.PI/180)*0, false);
+			context.stroke();
+			context.closePath();
+
+			// context.arcTo(x1, y1, x2, y2, radius)
+			context.beginPath();
+			context.strokeStyle = 'black';
+			context.moveTo(100, 300);
+			context.lineTo(200, 300);
+			context.arcTo(300, 500, 300, 300, 20);
+			context.stroke();
+			context.closePath();
+
+
+			// x0, y0
+			context.fillStyle = 'gray';
+			context.lineWidth = 2;
+			context.fillRect(200, 300, 10, 10);
+
+			context.fillStyle = 'gray';
+			context.font = '20px _sans';
+			context.textBaseLine = 'top';
+			context.fillText('x0,y0(200,300)', 190, 290 );				
+
+			// x1, y1
+			context.fillStyle = 'blue';
+			context.lineWidth = 2;
+			context.fillRect(300, 500, 10, 10);
+
+			context.fillStyle = 'blue';
+			context.font = '20px _sans';
+			context.textBaseLine = 'top';
+			context.fillText('x1,y2(300,500)', 310, 510 );	
+
+			// x2, y2
+			context.fillStyle = 'red';
+			context.lineWidth = 2;
+			context.fillRect(300, 300, 10, 10);
+
+			context.filleStyle = 'red';
+			context.font = '20px _sans';
+			context.textBaseLine = 'top';
+			context.fillText('x2,y2(300,300)', 310, 310);
+
+			context.beginPath();
+			context.lineWidth = 1;
+			context.strokeStyle = 'pink';
+			context.moveTo(300,500);
+			context.lineTo(300,300);
+			context.stroke();
+			context.closePath();
+
+		}
+		function drawPathBezierCurve(){
+
+		}
+	}
+	</script>
+</head>
+<body>
+<div style="position: absolute; top:50px; left:50px;"></div>
+<canvas id="canvas" width="1000" height="1000">
+	Your browser does not support HTML5 Canvas.
+</canvas>
+</body>
+</html>
