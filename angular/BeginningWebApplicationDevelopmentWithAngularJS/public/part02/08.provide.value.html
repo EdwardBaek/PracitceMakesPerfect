@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">	
+	<title>provide</title>
+	<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="./08.provide.value.js"></script>
+	<style type="text/css">
+		.box{border: 1px solid black; padding: 10px; margin: 10px 0;}
+	</style>
+</head>
+<body ng-app="app">
+
+	<div ng-controller="ValueCtrl" class="box">
+		<h3>ValueCtrl</h3>
+		<p>어플리케이션 이름 : {{appNm}}</p>
+	</div>
+
+	<div ng-controller="FactoryCtrl" class="box">
+		<h3>FactoryCtrl</h3>
+		<p>어플리케이션 이름 : {{appNm}}</p>
+		<div>
+			이름 : <input type="text" ng-model="newUser.name">이메일 : <input type="text" ng-model="newUser.email">
+			<button ng-click="addNewUser(newUser)">Add New User</button>
+		</div>
+		<ul>
+			<li ng-repeat="user in users track by $index" ng-click="deleteUser(user.index)">{{user.name}} : {{user.email}}</li>
+		</ul>
+	</div>
+
+	<div class="box">
+		<div ng-controller="ServiceCtrl">		
+			<h3>ServiceCtrl</h3>
+			<button ng-click="factory.add(1,1)">Calc Factory</button>
+			<button ng-click="service.add(1,1)">Calc Service</button>
+			<p>service : {{ service.lastValue }}</p>
+			<p>factory : {{ factory.lastValue }} </p>
+		</div>
+		<div ng-controller="ServiceCtrl2">
+			<h3>ServiceCtrl2</h3>
+			<p> 10 + 3 = {{val1}}</p>
+			<p> 20 - 10 = {{val2}}</p>
+			<button ng-click="factory.add(1,1)">Calc Factory</button>
+			<button ng-click="service.add(1,1)">Calc Service</button>
+			<p>service : {{ service.lastValue }}</p>
+			<p>factory : {{ factory.lastValue }} </p>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">	
+	<title>scope</title>
+	<script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="./05.scopeTypeProtoTypeMethod.js"></script>
+	<style type="text/css">
+		.ng-scop{border: 1px solid red; padding : 5px; }
+		.msg-list-area{ margin: 10px; height: 400px; border: 1px solid black;}
+	</style>
+</head>
+<body ng-controller="mainCtrl">
+	<input type="text" ng-model="noticeMsg">
+	<input type="button" value="공지 전송" ng-click="broadcast(noticeMsg)">
+	<div class="msg-list-area" ng-controller="chatMsgListCtrl">
+		<ul>
+			<li ng-repeat="msg in msgList track by $index">{{msg}}</li>
+		</ul>		
+	</div>
+	<div ng-controller="chatMsgInputCtrl">
+		<input type="text" ng-model="newMsg">
+		<input type="button" value="전송" ng-click="submit(newMsg)">
+	</div>
+</body>
+</html>
