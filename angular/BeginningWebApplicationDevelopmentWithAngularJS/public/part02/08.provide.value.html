@@ -27,6 +27,11 @@
 			<li ng-repeat="user in users track by $index" ng-click="deleteUser(user.index)">{{user.name}} : {{user.email}}</li>
 		</ul>
 	</div>
+	<div ng-controller="FactoryCtrl2" class="box">
+		<ul>
+			<li ng-repeat="user in users track by $index" ng-click="deleteUser(user.index)">{{user.name}} : {{user.email}}</li>
+		</ul>
+	</div>
 
 	<div class="box">
 		<div ng-controller="ServiceCtrl">		

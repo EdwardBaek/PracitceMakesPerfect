@@ -46,6 +46,27 @@ angular.module('app', [])
 			);			
 		};
 		$scope.deleteUser = function(idx){
+			console.log(idx);
+			FactoryUserResource.deleteUser(idx);
+		};
+	}
+)
+.controller('FactoryCtrl2',
+	function($scope, FactoryAppNm, FactoryUserResource){
+		$scope.appNm = FactoryAppNm;
+
+		// 해당 값의 link -> 해당 값도 singletone
+		$scope.users = FactoryUserResource.selectUsers();
+		$scope.addNewUser = function(newUser){
+			FactoryUserResource.addUser(
+				{
+					name : newUser.name,
+					email : newUser.email
+				}
+			);			
+		};
+		$scope.deleteUser = function(idx){
+			console.log(idx);
 			FactoryUserResource.deleteUser(idx);
 		};
 	}
