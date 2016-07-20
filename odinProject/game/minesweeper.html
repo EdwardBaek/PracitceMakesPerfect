@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta charset="utf-8">
+<style>
+#gameTable td{
+	height:40px;
+	width:40px;
+	position: relative;
+    text-align: center;
+}
+#gameTable td span.id{
+	height: 12px;
+	width: 26px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	text-align: center;
+	font-size: 12px;
+	border: 1px solid #FFF;
+}
+#gameTable td .bomb{
+	color: red;
+}
+.unopened{
+	opacity: 0.5;
+	background-color: grey;
+}
+.opened{
+	background-color: white;
+}
+.bomb{
+	color: red;
+}
+
+</style>
+</head>
+<body>
+	<div id="gameBoard">
+		<table id="gameTable"></table>
+	</div>
+</body>
+<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+<script src="./lib/jquery.min.js"></script>
+<script src="./minesweeper.js"></script>
+</html>
