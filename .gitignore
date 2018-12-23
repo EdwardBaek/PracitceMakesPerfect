@@ -1,4 +1,16 @@
-/angular/BeginningWebApplicationDevelopmentWithAngularJS/node_modules
-/angular/BeginningWebApplicationDevelopmentWithAngularJS/public/bower_components
 /doc
 *.log
+temp
+
+# modules and build #
+######################
+node_modules
+bower_components
+build
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
