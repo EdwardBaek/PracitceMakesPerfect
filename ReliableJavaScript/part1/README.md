@@ -440,7 +440,7 @@ DI 제다이가 되기 위한 질문 리스트. 한 가지라도 "예"라면 직
 컨테이너의 register 함수의 인자
 - 인젝터블 명
 - 의존성 명을 담은 배열
-- 인젝터블 객체를 반환하는 함수 - 인젝터블 인스턴스를 요청하면 컨테이너는 이 함수를 호출아혀 반환값을 다시 그대로 반환한다. 요청받은 객체의 의존성 인스턴스 역시 이 함수에 전달한다. 
+- 인젝터블 객체를 반환하는 함수 - 인젝터블 인스턴스를 요청하면 컨테이너는 이 함수를 호출하여 반환값을 다시 그대로 반환한다. 요청받은 객체의 의존성 인스턴스 역시 이 함수에 전달한다. 
 
 ```javascript
 DiContainer = function() {
@@ -498,7 +498,7 @@ DiContainer.prototype.register = function(name, dependencies, func) {
   || typeof func !== 'function') {
     throw new Error(this.messages.registerRequiresArgs);
   }
-  for (ix=0; ix<dependecies.lenght; ++ix) {
+  for (ix=0; ix<dependencies.length; ++ix) {
     if (typeof dependencies[ix] !== 'string') {
       throw new Error(this.messages.registerRequiresArgs);
     }
@@ -525,6 +525,8 @@ get 함수를 먼저 살펴보자.
 
 > 에러 처리 코드를 제일 먼저 테스트하라. 그 다음 다른 업무로 넘어가도 늦지 않다.
 
+get 함수에서 미등록 성명인지 확인
+
 ```javascript
 describe('get(name', function() {
   it('성명이 등록되어 있지 않으면 undeifned를 반환한다.', function() {
@@ -536,13 +538,14 @@ describe('get(name', function() {
 테스트는 실패한다. 당장 에러를 조치할 만큼만 코딩을 한다.
 
 ```javascript
-DiContainer.prototype.get = function() {
-};
+DiContainer.prototype.get = function() {};
 ```
 
 테스트가 성공한다. TDD에서 '우연히' 성공하는 테스트는 괜찮다. 앞으로 무엇을 테스트할지 확실히 알고 있다면 잘못된 상환은 저절로 바로 잡힌다. 지금 다른 코드가 들어차 있다면 테스트를 앞질러 가버린 셈이다.
 
 > 코드가 전혀 없어도 좋다. 테스트를 성공시킬 최소한의 코드만 작성하라. 테스트코드를 앞서 가지 마라.
+
+DiContainer.get의 포지티브 테스트(positive test)
 
 ```javascript
 it('등록된 함수를 실행한 결과를 반환한다.', function() {
@@ -551,14 +554,54 @@ it('등록된 함수를 실행한 결과를 반환한다.', function() {
   container.register(name, [], function() {
     return returnFromRegisteredFunction;
   });
-  expect(container.get(name).toBe(returnFromRegisteredFunction))
+  expect(container.get(name)).toBe(returnFromRegisteredFunction);
 });
 ```
 
+name과 returnFromRegisteredFunction 변수로 테스트를 DRY하게 유지한채 자기 서술적인(self-documenting) 기대실을 만들었다.
+ > 리터럴 대신 변수명을 잘 정해서 DRY하고 자기 서술적인 테스트를 작성하라.
 
+register로 등록한 데이터를 저장하고 get으로 다시 추출 할 수 있으면 테스트는 성공이다. 
 
+등록한 함수를 DiContainer로 조회
 
+```javascript
+DiContainer = function() {
+  /*...*/
+  this.registrations = [];
+};
 
+DiContainer.prototype.register = function(name, dependencies, func) {
+  /*...*/
+  this.registrations[name] = { func: func };
+};
+
+DiContainer.prototype.get = function(name) {
+  return this.registrations[name].func();
+};
+```
+
+새 테스트는 성공하지만, 빈 코드로 이전에 성공했던 이전 테스트는 실패한다. 이렇게 스스로 일이 바로 잡히는 경우가 TDD에서는 드물지 않다.
+
+이전 테스트를 바로잡은 코드
+
+```javascript
+DiContainer.prototype.get = function(name) {
+  var registeration = this.registrations[name];
+  if (registeration == undefined) {
+    return undefined;
+  }
+  return registeration.func();
+};
+```
+
+이제 get은 자신이 반환하는 객채에 의존성을 제공할 수 있다. 
+
+의존성 제공 테스트
+
+```javascript
+
+```
 
 
 ### 2.3 애스팩트 툴킷

@@ -3,6 +3,7 @@ DiContainer = function() {
   if (!(this instanceof DiContainer)) {
     return new DiContainer();
   }
+  this.registrations = [];
 };
 
 DiContainer.prototype.messages = {
@@ -23,4 +24,9 @@ DiContainer.prototype.register = function(name, dependencies, func) {
       throw new Error(this.messages.registerRequiresArgs);
     }
   }
+  this.registrations[name] = { func: func };
+};
+
+DiContainer.prototype.get = function(name) {
+  return this.registrations[name].func();
 };
