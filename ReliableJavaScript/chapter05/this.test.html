@@ -1,0 +1,25 @@
+<html>
+<head>
+    <script src="attendeeCollection.js"></script>
+    <script src="checkInRecorder.js"></script>
+    <script src="checkInService.js"></script>
+    <script src="checkedInAttendeeCounter.this.js"></script>
+</head>
+<script>
+var checkInService = Conference.checkInService(Conference.checkInRecorder());
+var attendees = Conference.attendeeCollection();
+var counter = Conference.checkedInAttendeeCounter();
+
+// Add attendees selected in the UI to the attendee collection
+attendees.add(Conference.attendee('Pete', 'Mitchell'));
+attendees.add(Conference.attendee('Nick', 'Bradshaw'));
+
+// check the attendees in
+attendees.iterate(checkInService.checkIn);
+
+// count the checked-in attendess
+attendees.iterate(counter.countIfCheckedIn);
+
+console.log(counter.getCount());  // 0
+</script>
+</html>

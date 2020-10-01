@@ -1,0 +1,27 @@
+<html>
+<head>
+  <link data-require="jasmine@*" data-semver="2.0.0" rel="stylesheet" href="http://cdn.jsdelivr.net/jasmine/2.0.0/jasmine.css" />
+  <script data-require="jasmine@*" data-semver="2.0.0" src="http://cdn.jsdelivr.net/jasmine/2.0.0/jasmine.js"></script>
+  <script data-require="jasmine@*" data-semver="2.0.0" src="http://cdn.jsdelivr.net/jasmine/2.0.0/jasmine-html.js"></script>
+  <script data-require="jasmine@*" data-semver="2.0.0" src="http://cdn.jsdelivr.net/jasmine/2.0.0/boot.js"></script>
+  <!-- <script src="attendee.js"></script> -->
+  <script src="attendeeCollection.js"></script>
+  <script src="checkInRecorder.js"></script>
+  <script src="checkInService.js"></script>
+  <!-- <script src="checkedInAttendeeCounter.js"></script> -->
+  <!-- <script src="attendeeCollection.test.js"></script> -->
+  <script src="checkInService.test.js"></script>
+  <!-- <script src="checkedInAttendeeCounter_tests.js"></script> -->
+</head>
+<body>
+
+</body>
+</html>
+<script>
+var checkInService = Conference.checkInService(Conference.checkInRecorder())
+var attendees = Conference.attendeeCollection();
+
+// Add attendees selected in the UI to the attendee collection
+
+attendees.iterate(checkInService.checkIn);
+</script>
